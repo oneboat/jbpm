@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<process name="transition" xmlns="http://jbpm.org/4.4/jpdl">
+   <start name="start1" g="228,37,48,48">
+      <transition name="to task1" to="task1" g="-53,-17"/>
+   </start>
+   <end name="end1" g="244,279,48,48"/>
+   <task name="task1" g="214,114,92,52">
+   	  <!-- 在一个节点如果含有多个transition，只有一个transition 可以不写name属性 （默认transition） -->
+      <transition to="task2" g="-53,-17"/> <!-- 默认transition -->
+      <transition name="to task3" to="task3" g="-53,-17"/>
+   </task>
+   <task name="task2" g="121,186,92,52">
+      <transition name="to end1" to="end1" g="-47,-17"/>
+   </task>
+   <task name="task3" g="311,182,92,52">
+      <transition name="to end1" to="end1" g="-47,-17"/>
+   </task>
+</process>

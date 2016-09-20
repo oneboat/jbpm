@@ -5,10 +5,10 @@
       <transition g="-115,-25" name="to员工请假申请" to="员工请假申请"/>
    </start>
    <end g="256,488,48,48" name="end1"/>
-   <task g="204,199,127,52" name="员工请假申请">
+   <task g="204,199,127,52" name="员工请假申请" assignee="员工">
       <transition g="-63,-25" name="to 部门经理" to="部门经理"/>
    </task>
-   <task g="228,356,92,52" name="部门经理">
+   <task g="228,356,92,52" name="部门经理" assignee="经理">
       <transition g="-62,-25" name="to end1" to="end1"/>
    </task> 
    

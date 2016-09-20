@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<process xmlns="http://jbpm.org/4.4/jpdl" name="decision2">
+   <start name="start1" g="243,4,48,48">
+      <transition name="to 购买火车票" to="购买火车票" g="-83,-17"/>
+   </start>
+   <end name="end1" g="250,337,48,48"/>
+   <task name="购买火车票" g="220,79,92,52">
+      <transition name="to exclusive1" to="exclusive1" g="-83,-17"/>
+   </task>
+   <task name="学生半票" g="62,192,92,52">
+      <transition name="to end1" to="end1" g="-47,-17"/>
+   </task>
+   <task name="军人半票" g="186,231,92,52">
+      <transition name="to end1" to="end1" g="-47,-17"/>
+   </task>
+   <task name="领导免费" g="321,223,92,52">
+      <transition name="to end1" to="end1" g="-47,-17"/>
+   </task>
+   <task name="正常收费" g="468,215,92,52">
+      <transition name="to end1" to="end1" g="-47,-17"/>
+   </task>
+   <decision name="exclusive1" g="236,151,48,48">
+   	  <handler class="cn.tf.jbpm.handler.MyDecisionHandler"></handler>
+      <transition name="to 学生半票" to="学生半票" g="-71,-17"/>
+      <transition name="to 军人半票" to="军人半票" g="-71,-17"/>
+      <transition name="to 领导免费" to="领导免费" g="-71,-17"/>
+      <transition name="to 正常收费" to="正常收费" g="-71,-17"/>
+   </decision>
+</process>
