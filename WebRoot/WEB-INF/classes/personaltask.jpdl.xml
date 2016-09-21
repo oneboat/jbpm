@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<process name="personaltask" xmlns="http://jbpm.org/4.4/jpdl">
+   <start name="start1" g="227,9,48,48">
+      <transition name="to 员工提交申请" to="员工提交申请" g="-95,-17"/>
+   </start>
+   <end name="end1" g="229,334,48,48"/>
+   <task name="员工提交申请" g="207,91,92,52" assignee="张三">
+      <transition name="to 部门经理审批" to="部门经理审批" g="-95,-17"/>
+   </task>
+   <task name="部门经理审批" g="211,177,92,52" assignee="#{manager}">
+      <transition name="to 总经理审批" to="总经理审批" g="-83,-17"/>
+   </task>
+   <task name="总经理审批" g="214,249,92,52">
+   	  <assignment-handler class="cn.tf.jbpm.handler.MyPersonlTaskHandler" />
+      <transition name="to end1" to="end1" g="-47,-17"/>
+   </task>
+</process>

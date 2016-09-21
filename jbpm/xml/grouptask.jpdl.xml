@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<process name="grouptask" xmlns="http://jbpm.org/4.4/jpdl">
+   <start g="245,10,48,48" name="start1">
+      <transition name="to 填写财务报销申请" to="填写财务报销申请" g="-119,-17"/>
+   </start>
+   <end g="258,339,48,48" name="end1"/>
+   <task name="填写财务报销申请" g="216,86,123,52" candidate-users="张三,李四,王五">
+      <transition name="to 经理审批" to="经理审批" g="-71,-17"/>
+   </task>
+   <task name="经理审批" g="235,171,92,52" candidate-groups="经理">
+      <transition name="to 财务拨款" to="财务拨款" g="-71,-17"/>
+   </task>
+   <task name="财务拨款" g="236,246,92,52">
+   	  <assignment-handler class="cn.tf.jbpm.handler.MyGroupTaskHandler" />
+      <transition name="to end1" to="end1" g="-47,-17"/>
+   </task>
+</process>

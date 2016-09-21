@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<process name="forkjoin" xmlns="http://jbpm.org/4.4/jpdl">
+   <start g="214,17,48,48" name="start1">
+      <transition g="-71,-17" name="to 我要离职" to="我要离职"/>
+   </start>
+   <end g="218,328,48,48" name="end1"/>
+   <task g="200,88,92,52" name="我要离职">
+      <transition g="-53,-17" name="to fork1" to="fork1"/>
+   </task>
+   <task g="66,205,163,55" name="办理人力资源部手续">
+      <transition g="-53,-17" name="to join1" to="join1"/>
+   </task>
+   <task g="297,211,147,52" name="办理财务手续">
+      <transition g="-53,-17" name="to join1" to="join1"/>
+   </task>
+   <fork g="222,155,48,48" name="fork1">
+      <transition g="-131,-17" name="to 办理人力资源部手续" to="办理人力资源部手续"/>
+      <transition g="-95,-17" name="to 办理财务手续" to="办理财务手续"/>
+   </fork>
+   <join g="222,272,48,48" name="join1">
+      <transition g="-47,-17" name="to end1" to="end1"/>
+   </join>
+</process>
