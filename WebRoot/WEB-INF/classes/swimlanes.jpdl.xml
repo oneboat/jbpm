@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<process name="swimlanes" xmlns="http://jbpm.org/4.4/jpdl">
+   <start name="start1" g="210,8,48,48">
+      <transition name="to 报销申请" to="报销申请" g="-71,-17"/>
+   </start>
+   <end name="end1" g="218,319,48,48"/>
+   <!-- 保证 申请和签字是同一个 人  -->
+   <swimlane name="commitperson" candidate-users="张三,李四,王五"></swimlane>
+   <task name="报销申请" g="188,81,92,52" swimlane="commitperson">
+      <transition name="to 发钱" to="发钱" g="-47,-17"/>
+   </task>
+   <task name="发钱" g="192,165,92,52">
+      <transition name="to 签字" to="签字" g="-47,-17"/>
+   </task>
+   <task name="签字" g="196,237,92,52" swimlane="commitperson">
+      <transition name="to end1" to="end1" g="-47,-17"/>
+   </task>
+</process>
